@@ -1,6 +1,6 @@
 # dpc-system - DPC System for Programming Contests and Practicums
 
-Status: in process of making the system open source
+Status: The code is in process of making the system open source.
  If you are interested in using the system, send me an email.  It may
  speed up making it available here.
 
@@ -8,7 +8,9 @@ The system is based on Perl CGI scripts and assumes the Linux environment
 and file system.  It does not use a database system, but instead
 writes to plain files and creates directories to save data.
 
-ChangeLog:
+## Installation
+
+## ChangeLog:
 
 1.2001 currently under development
 
