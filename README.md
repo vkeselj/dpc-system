@@ -3,9 +3,12 @@
 Status: in process of making the system open source
 
 The system is based on Perl CGI scripts and assumes the Linux environment
-and file system.
+and file system.  It does not use a database system, but instead
+writes to plain files and creates directories to save data.
 
 ChangeLog:
 
-2020-10-03
+1.2001 currently under development
+
+1.20 2020-10-03 Vlado Keselj https://vlado.ca vlado@dnlp.ca
  - created the github repository
