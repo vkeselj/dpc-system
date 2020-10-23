@@ -29,6 +29,7 @@ is okay only in a one-user system or where all users can be trusted.
 ## ChangeLog
 
 1.2001 currently under development
+ - documentation improvements
 
 1.20 2020-10-03 Vlado Keselj https://vlado.ca vlado@dnlp.ca
  - created the github repository
