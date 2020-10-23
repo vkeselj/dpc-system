@@ -36,7 +36,10 @@ and we should have a directory named <code>dpc-system</code> with a
 copy of the DPC System.  I use a convention to name the directory as a
 date of the competition or practicum (with a possible suffix, such as
 <code>-sample</code> or similar), so we can rename it as follows, and
-<code>cd</code> into it:
+`cd` into it:
+
+    mv dpc-system 2020-10-22-sample
+    cd 2020-10-22-sample
 
 ## ChangeLog
 
