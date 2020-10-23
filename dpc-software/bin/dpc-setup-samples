@@ -1,0 +1,16 @@
+#!/bin/bash
+# dpc-setup-samples - copy samples to base dir
+# DPC System (c) Vlado Keselj 2010-2020 last update: 2020-10-23
+
+cp dpc-software/samples/index.cgi  .
+cp dpc-software/samples/login.cgi  .
+cp dpc-software/samples/logout.cgi .
+cp dpc-software/samples/problems.cgi .
+cp dpc-software/samples/codeview.cgi .
+cp dpc-software/samples/feedbackview.cgi .
+cp dpc-software/samples/adminview.cgi .
+cp dpc-software/samples/style-dpc-3.css .
+mkdir -p templates
+cp dpc-software/samples/templates/dpc-3.html.sfish templates/
+mkdir -p images
+cp dpc-software/samples/images/dpc-logo2.png images/

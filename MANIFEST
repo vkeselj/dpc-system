@@ -10,3 +10,4 @@ dpc-software/samples/adminview.cgi
 dpc-software/samples/style-dpc-3.css
 dpc-software/samples/templates/dpc-3.html.sfish
 dpc-software/samples/images/dpc-logo2.png
+dpc-software/bin/dpc-setup-samples
