@@ -26,10 +26,14 @@ the group permissions should be set appropriatelly.  As the third
 option, the files would be all-readable and some all-writable, which
 is okay only in a one-user system or where all users can be trusted.
 
+The system can be cloned in a web server accessible directory such as
+<code>public_html</code>.  For example, we can do something like:
+
 ## ChangeLog
 
 1.2001 currently under development
  - documentation improvements
+ - added file MANIFEST
 
 1.20 2020-10-03 Vlado Keselj https://vlado.ca vlado@dnlp.ca
  - created the github repository
