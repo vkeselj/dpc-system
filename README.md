@@ -46,11 +46,16 @@ are not ready in the main directory.  Instead, they are in the
 `dpc-software/samples` directory.  The reason for this is that these
 files customizable and we want to allow later `git pull` commands in
 order to update the DPC System without overwriting these files.
+For this reason, we need to run the following command the first time
+the system is created:
+
+    bash dpc/software/bin/dpc-setup-samples
 
 ## ChangeLog
 
 1.2002 current version under development
  - documentation improvements
+ - adding dpc-software/bin/dpc-setup-samples
 
 1.2001 2020-10-22
  - documentation improvements
