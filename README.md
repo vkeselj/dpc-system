@@ -41,14 +41,16 @@ date of the competition or practicum (with a possible suffix, such as
     mv dpc-system 2020-10-22-sample
     cd 2020-10-22-sample
 
-2. Although a simpler approach would be to have now site ready or
-almost ready to be accessed by having CGI files in the main
-directory, it is not because these files are mostly in the directory
-`dpc-software/samples`, which is a template directory.  These files
-are customizable and should not be overwritten by a `git pull` from
-Github, which can be made to do a DPC System software update.
+2. We cannot access the site immediately because the needed CGI files
+are not ready in the main directory.  Instead, they are in the
+`dpc-software/samples` directory.  The reason for this is that these
+files customizable and we want to allow later `git pull` commands in
+order to update the DPC System without overwriting these files.
 
 ## ChangeLog
+
+1.2002 current version under development
+ - documentation improvements
 
 1.2001 2020-10-22
  - documentation improvements
