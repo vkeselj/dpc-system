@@ -1,0 +1,156 @@
+<HTML><HEAD><TITLE><!--<? echo $Title !>--></TITLE>
+<!--<? if ($CGI_file eq 'current-results.cgi') {
+  my $refreshtime=60;
+  echo "<META HTTP-EQUIV=\"Refresh\" CONTENT=\"$refreshtime; URL=$CGI_file\">\n";
+} !>-->
+<link rel=StyleSheet href="style-dpc-3.css" type="text/css" media="all" />
+#<link rel=StyleSheet href="print-dpc-3.css" type="text/css" media="print" />
+</HEAD>
+<BODY bgcolor=white>
+<div id="wrapper">
+<div class="header">
+
+<div id="mainlogo">
+#<center><h2>DPC Sample Contest</h2></center>
+
+<div id="login">
+<!--<? 
+my $FontListSansSerif = "Verdana, Geneva, Arial, Helvetica, sans-serif";
+my $FontFamilySansSerif = "font-family: $FontListSansSerif;";
+if ($SessionId eq '')
+#{ echo "<a style=\"font-size:10pt;\" href=\"$HttpsBaseLink/login.cgi\">Login</a>\n" }
+{ echo "<a href=\"$HttpsBaseLink/login.cgi\">Login</a>\n" }
+else {
+  #echo "<a style=\"font-size:10pt;\" href=\"$HttpsBaseLink/logout.cgi\">Logout</a>\n";
+  echo "<a href=\"$HttpsBaseLink/logout.cgi\">Logout</a>\n";
+  #echo "<span style=\"font-size:10pt;color:white;\">";
+#  if ($#UserRoles <= 0) { echo "($UserFirstName $UserLastName, $UserEmail)" }
+  if ($#UserRoles <= 0) { echo "$UserFirstName" }
+#  else  { echo "($UserFirstName $UserLastName, $UserEmail, $UserRole)" }
+  else  { echo "($UserFirstName)" }
+  #echo "</span>\n";
+  echo "\n";
+}
+!>-->
+</div>
+</div>
+</div>
+
+<div class="mainnav"><div class="mn-wrapper"><h2>
+<!--<? echo $H1 !>-->
+</h2>
+</div></div>
+
+<table width="100%" border=0>
+<tr><td valign=top colspan=4>
+<table width=100% border=0>
+<td width=400pt align=right valign=top>
+<!--<? 
+my $FontListSansSerif = "Verdana, Geneva, Arial, Helvetica, sans-serif";
+my $FontFamilySansSerif = "font-family: $FontListSansSerif;";
+if ($SessionId eq '')
+{ 
+ ##echo "<a style=\"$FontFamilySansSerif\" href=\"$HttpsBaseLink/login.cgi\">Login</a>\n" 
+}
+else {
+  my $s;
+  if ($UserFirstName eq $UserLastName and $UserFirstName =~ /^[a-z]/)
+  { $s.="$UserFirstName" } else {$s.="$UserFirstName $UserLastName"}
+  if ($UserEmail ne '') { $s.=", $UserEmail" }
+  if ($#UserRoles > 0) { $s.=", $UserRole" }
+  my $dispid = $User->{displayid}; my $dispid1 = $User->{displayid1};
+  if ($dispid or $dispid1) {
+    $s.=", dispid:$dispid";
+    if ($dispid and $dispid1) { $s.=" or $dispid1" } else { $s.=$dispid1 }
+  }
+  echo "<span style=\"$FontFamilySansSerif font-size:10pt;\">$s</span>\n";
+}
+
+!>-->
+</table>
+
+<tr>
+<td align="left"></td>
+<td align=center colspan=3>
+</td>
+</tr>
+
+<tr>
+<td width=100pt valign=top>  <!--left-->
+<div id="leftmenu">
+<ul>
+<li><a href="index.cgi">Home</a></li>
+<!--<?
+if ($ScoreboardPublic) {
+ echo "<li><a href=\"scoreboard.cgi\">Scoreboard</a></li>\n"; }
+
+$LoginMenuFirst = '';
+if ($SessionId eq '' && $CGI_file eq 'login.cgi') { $LoginMenuFirst = 1 }
+elsif ($SessionId ne '') {
+  $LoginMenuFirst = 1;
+  echo "<hr>\n";
+  echo "<li><a href=\"contest.cgi\">Contest</a></li>\n";
+  echo "<li><a href=\"problems.cgi\">Problems</a></li>\n";
+  if (!$ScoreboardPublic) {
+    echo "<li><a href=\"scoreboard.cgi\">Scoreboard</a></li>\n"; }
+  echo "<li><a href=\"refs.cgi\">References</a></li>\n";
+  echo "<li><a href=\"clarifications.cgi\">Clarifications</a></li>\n".
+    #"<li><a href=\"questions.cgi\">Questions</a></li>".
+    #"<li><a href=\"print.cgi\">Print File</a></li>".
+    "<li><a href=\"$HttpsBaseLink/logout.cgi\">Logout</a></li><hr>\n";
+}
+if ($SessionId ne '' and $UserRole eq 'admin') {
+  echo "<li><u>ADMIN:</u></li><li><a href=\"allsubmissions.cgi\">Submissions</a></li>\n".
+    "<li><a href=\"scoreboard-admin.cgi\">A-SBoard</a></li>\n".
+     #"<li><a href=\"icpc-export.cgi\">ICPC Export</a></li>".
+	#"<li><a href=\"registrations.cgi\">Registrations</a></li>".
+	"<hr>\n";
+}
+
+##<li><a href="news.cgi">News</a></li>
+if ($RegistrationOpen and $SessionId eq '') {
+  echo "<li><a href=\"register.cgi\">Registration</li>\n"; }
+
+!>-->
+#<li><a href="scope.cgi">Scope</li>
+#<li><a href="rules.cgi">Rules</li>
+#<li><a href="prizes.cgi">Prizes</li>
+#<li><a href="schedule.cgi">Schedule</li>
+#<li><a href="environment.cgi">Environment</li>
+#<li><a href="organization.cgi">Organization</li>
+#<li><a href="sampleproblem1.cgi">Sample Problem 1</li>
+#<li><a href="sampleproblem2.cgi">Sample Problem 2</li>
+
+<!--<? 
+
+if ($SessionId eq '' && !$LoginMenuFirst)
+{ echo "<li><a href=\"$HttpsBaseLink/login.cgi\">Login</a></li>\n" }
+!>-->
+
+</ul>
+</div>
+#<br><a href="archive.html">News&nbsp;Archive</a>
+#<br><a href="links.html">Links</a>
+#<hr>
+#<a href="resources">Resources</a><br>(local access)
+#<hr>
+
+<br><br>
+
+</td>
+<td width=1pt bgcolor="#4E79B0"><td width=2pt>
+<td valign=top>
+
+_CONTENT_
+
+</table>
+<p><hr>
+<address>
+Send comments or questions about the contest to
+<a target="_blank" href="http://vlado.ca"
+ >Vlado Keselj &lt;vlado@dnlp.ca&gt;</a>. 
+#<!--< ? echo " &mdash; Last modification: ".&last_update() !>-->
+&nbsp;&nbsp;&nbsp;Powered by the DPC System (v1.2001)
+</address>
+</body>
+</html>

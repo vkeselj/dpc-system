@@ -1,2 +1,12 @@
 README.md  # Readme file for Github
 MANIFEST   # This list of files for public package release
+dpc-software/samples/index.cgi
+dpc-software/samples/login.cgi
+dpc-software/samples/logout.cgi
+dpc-software/samples/problems.cgi
+dpc-software/samples/codeview.cgi
+dpc-software/samples/feedbackview.cgi
+dpc-software/samples/adminview.cgi
+dpc-software/samples/style-dpc-3.css
+dpc-software/samples/templates/dpc-3.html.sfish
+dpc-software/samples/images/dpc-logo2.png
