@@ -15,4 +15,6 @@ cp dpc-software/samples/templates/dpc-3.html.sfish templates/
 mkdir -p images
 cp dpc-software/samples/images/dpc-logo2.png images/
 
+# Some basic permissions setup, more elaborate setup is in other commands
 chmod a+x .
+chmod u+x dpc-software/bin/dpc-setup-samples

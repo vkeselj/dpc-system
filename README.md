@@ -48,14 +48,17 @@ files customizable and we want to allow later `git pull` commands in
 order to update the DPC System without overwriting these files.
 For this reason, we need to run the following command the first time
 the system is created:
-
+    ```
     bash dpc/software/bin/dpc-setup-samples
-
+    ```
+    
 ## ChangeLog
 
-1.2002 current version under development
+1.2002 2020-10-24
  - documentation improvements
  - adding dpc-software/bin/dpc-setup-samples
+ - adding CGI/AuthRegister.pm (my Perl module on CPAN, but may be used
+       directly here as well)
 
 1.2001 2020-10-22
  - documentation improvements
