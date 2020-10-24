@@ -14,3 +14,5 @@ mkdir -p templates
 cp dpc-software/samples/templates/dpc-3.html.sfish templates/
 mkdir -p images
 cp dpc-software/samples/images/dpc-logo2.png images/
+
+chmod a+x .
