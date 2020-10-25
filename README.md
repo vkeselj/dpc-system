@@ -58,18 +58,22 @@ permissions of the files.
 ## ChangeLog
 
 1.2003 current version under development
- - documentation improvements
+- incomplete package, preparation in progress
+- documentation improvements
+- added Text/Starfish.pm
 
 1.2002 2020-10-24
- - documentation improvements
- - adding dpc-software/bin/dpc-setup-samples
- - adding CGI/AuthRegister.pm (my Perl module on CPAN, but may be used
+- incomplete package, preparation in progress
+- documentation improvements
+- adding dpc-software/bin/dpc-setup-samples
+- adding CGI/AuthRegister.pm (my Perl module on CPAN, but may be used
        directly here as well)
 
 1.2001 2020-10-22
- - documentation improvements
- - added file MANIFEST
- - added:
+- incomplete package, preparation in progress
+- documentation improvements
+- added file MANIFEST
+- added:
    dpc-software/samples/index.cgi
    dpc-software/samples/login.cgi
    dpc-software/samples/logout.cgi
@@ -82,4 +86,5 @@ permissions of the files.
    dpc-software/samples/images/dpc-logo2.png
 
 1.20 2020-10-03 Vlado Keselj https://vlado.ca vlado@dnlp.ca
- - created the github repository
+- incomplete package, preparation in progress
+- created the github repository

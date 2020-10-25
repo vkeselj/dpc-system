@@ -12,3 +12,4 @@ dpc-software/samples/templates/dpc-3.html.sfish
 dpc-software/samples/images/dpc-logo2.png
 dpc-software/bin/dpc-setup-samples
 CGI/AuthRegister.pm    # my Perl module, available on CPAN
+Text/Starfish.pm       # my Perl module, availalbe on CPAN
