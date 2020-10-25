@@ -1,6 +1,7 @@
 # dpc-system - DPC System for Programming Contests and Practicums
 
-Status: The code is in process of making the system open source.
+**Status:**  The set of files on github is not complete, as it is
+ still in process of making the system open source.
  If you are interested in using the system, send me an email.  It may
  speed up making it available here.
 
@@ -51,8 +52,13 @@ the system is created:
     ```
     bash dpc/software/bin/dpc-setup-samples
     ```
-    
+This will copy the sample files into the main directory, and set some
+permissions of the files.
+
 ## ChangeLog
+
+1.2003 current version under development
+ - documentation improvements
 
 1.2002 2020-10-24
  - documentation improvements
