@@ -50,17 +50,27 @@ order to update the DPC System without overwriting these files.
 For this reason, we need to run the following command the first time
 the system is created:
     ```
-    bash dpc/software/bin/dpc-setup-samples
+    ./dpc/software/bin/dpc-setup-samples
     ```
 This will copy the sample files into the main directory, and set some
-permissions of the files.
+permissions of the files.  If the file is not executable, run it using
+Perl as:
+    ```
+    perl dpc/software/bin/dpc-setup-samples
+    ```
 
 ## ChangeLog
 
-1.2003 current version under development
+1.2003 2020-10-27
 - incomplete package, preparation in progress
 - documentation improvements
 - added Text/Starfish.pm
+- added dpc-software/bin/DPC.pm, dpc-software/bin/dpc-lib.pl,
+  dpc-software/bin/DPC/Feedback.pm, dpc-software/samples/configuration.pl
+- changed dpc-software/bin/dpc-setup-samples to Perl, skipping
+  existing files
+- added NAME, ABSTRACT, and VERSION to DPC.pm
+- modified dpc-3.html.sfish template to show proper VERSION
 
 1.2002 2020-10-24
 - incomplete package, preparation in progress

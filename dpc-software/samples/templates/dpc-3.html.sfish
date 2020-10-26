@@ -150,7 +150,9 @@ Send comments or questions about the contest to
 <a target="_blank" href="http://vlado.ca"
  >Vlado Keselj &lt;vlado@dnlp.ca&gt;</a>. 
 #<!--< ? echo " &mdash; Last modification: ".&last_update() !>-->
-&nbsp;&nbsp;&nbsp;Powered by the DPC System (v1.2002)
+&nbsp;&nbsp;&nbsp;Powered by the <a target="_blank"
+href="https://vlado.ca/software.html">DPC System</a>
+<!--<? echo "(Version $DPC::VERSION)" !>-->
 </address>
 </body>
 </html>
