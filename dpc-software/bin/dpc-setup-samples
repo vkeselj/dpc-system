@@ -1,20 +1,42 @@
-#!/bin/bash
+#!/usr/bin/perl
 # dpc-setup-samples - copy samples to base dir
-# DPC System (c) Vlado Keselj 2010-2020 last update: 2020-10-23
+# DPC System (c) Vlado Keselj 2010-2020 last update: 2020-10-27
+use strict;
 
-cp dpc-software/samples/index.cgi  .
-cp dpc-software/samples/login.cgi  .
-cp dpc-software/samples/logout.cgi .
-cp dpc-software/samples/problems.cgi .
-cp dpc-software/samples/codeview.cgi .
-cp dpc-software/samples/feedbackview.cgi .
-cp dpc-software/samples/adminview.cgi .
-cp dpc-software/samples/style-dpc-3.css .
-mkdir -p templates
-cp dpc-software/samples/templates/dpc-3.html.sfish templates/
-mkdir -p images
-cp dpc-software/samples/images/dpc-logo2.png images/
+$|=1;
+for my $d (qw(
+  templates images
+)) { -d $d or mkdir $d, 0777; }
+
+my $cntcp=0; my $cntex=0; my $cnter=0;
+for my $f (qw(
+  dpc-software/samples/configuration.pl
+  dpc-software/samples/index.cgi
+  dpc-software/samples/login.cgi
+  dpc-software/samples/logout.cgi
+  dpc-software/samples/problems.cgi
+  dpc-software/samples/codeview.cgi
+  dpc-software/samples/feedbackview.cgi
+  dpc-software/samples/adminview.cgi
+  dpc-software/samples/style-dpc-3.css
+  dpc-software/samples/templates/dpc-3.html.sfish
+  dpc-software/samples/images/dpc-logo2.png images/
+)) {
+  my $f1 = $f; $f1 =~ s/^dpc-software\/samples\///;
+  if (-e $f1) { print "$f1 exists\n"; ++$cntex; next; }
+  my $c="cp $f $f1"; print "$c\n";
+  if (system($c)==0) { $cntcp++; } else { print "error: $?\n"; $cnter++; }
+}
+print "\n";
+if ($cntcp>0) { print "Copied $cntcp files\n" }
+if ($cntex>0) { print "$cntex files exist and were not copied.\n".
+  "You must remove them to be replaced with samples.\n" }
+if ($cnter>0) { print "Errors in $cnter files!\n" }
 
 # Some basic permissions setup, more elaborate setup is in other commands
-chmod a+x .
-chmod u+x dpc-software/bin/dpc-setup-samples
+print "\nSetting up some basic permissions:\n";
+my $c = 'chmod u+x dpc-software/bin/dpc-setup-samples
+chmod a+x . images
+chmod a+r style-dpc-3.css images/dpc-logo2.png
+';
+print $c; print `$c`;
