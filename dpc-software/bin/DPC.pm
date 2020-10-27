@@ -5,7 +5,7 @@ package DPC;
 use vars qw($NAME $ABSTRACT $VERSION);
 $NAME     = 'DPC';
 $ABSTRACT = 'dpc-system - DPC System for Programming Contests and Practicums';
-$VERSION  = '1.2003';
+$VERSION  = '1.2004';
 
 use vars (
   '%Chmod', # defined if needed to chmod some dirs or files

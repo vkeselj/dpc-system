@@ -59,42 +59,14 @@ Perl as:
     perl dpc/software/bin/dpc-setup-samples
     ```
 
+3. There are three files among the sample files that you should edit:
+   - configuration.pl - to setup competition URL, name, and other parameters,
+   - db/users.db - to modify information about users, and
+   - db/passwords - to add some passwords for users
+The passwords are initially saved in the plain text format.  The
+sample passwords file is randomized to remove a security risk
+immediatelly after installation.
+
 ## ChangeLog
 
-1.2003 2020-10-27
-- incomplete package, preparation in progress
-- documentation improvements
-- added Text/Starfish.pm
-- added dpc-software/bin/DPC.pm, dpc-software/bin/dpc-lib.pl,
-  dpc-software/bin/DPC/Feedback.pm, dpc-software/samples/configuration.pl
-- changed dpc-software/bin/dpc-setup-samples to Perl, skipping
-  existing files
-- added NAME, ABSTRACT, and VERSION to DPC.pm
-- modified dpc-3.html.sfish template to show proper VERSION
-
-1.2002 2020-10-24
-- incomplete package, preparation in progress
-- documentation improvements
-- adding dpc-software/bin/dpc-setup-samples
-- adding CGI/AuthRegister.pm (my Perl module on CPAN, but may be used
-       directly here as well)
-
-1.2001 2020-10-22
-- incomplete package, preparation in progress
-- documentation improvements
-- added file MANIFEST
-- added:
-   dpc-software/samples/index.cgi
-   dpc-software/samples/login.cgi
-   dpc-software/samples/logout.cgi
-   dpc-software/samples/problems.cgi
-   dpc-software/samples/codeview.cgi
-   dpc-software/samples/feedbackview.cgi
-   dpc-software/samples/adminview.cgi
-   dpc-software/samples/style-dpc-3.css
-   dpc-software/samples/templates/dpc-3.html.sfish
-   dpc-software/samples/images/dpc-logo2.png
-
-1.20 2020-10-03 Vlado Keselj https://vlado.ca vlado@dnlp.ca
-- incomplete package, preparation in progress
-- created the github repository
+ChangeLog is kept in the file named <code>ChangeLog</code>.

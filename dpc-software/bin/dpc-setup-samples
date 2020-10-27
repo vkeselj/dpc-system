@@ -1,11 +1,13 @@
 #!/usr/bin/perl
 # dpc-setup-samples - copy samples to base dir
-# DPC System (c) Vlado Keselj 2010-2020 last update: 2020-10-27
+# DPC System (c) Vlado Keselj 2010-2020 last update: 2020-10-29
 use strict;
 
 $|=1;
+# creating initial directories, let umask decide about permissions
+print "Creating directories.\n";
 for my $d (qw(
-  templates images
+  templates images db
 )) { -d $d or mkdir $d, 0777; }
 
 my $cntcp=0; my $cntex=0; my $cnter=0;
@@ -20,12 +22,16 @@ for my $f (qw(
   dpc-software/samples/adminview.cgi
   dpc-software/samples/style-dpc-3.css
   dpc-software/samples/templates/dpc-3.html.sfish
-  dpc-software/samples/images/dpc-logo2.png images/
+  dpc-software/samples/images/dpc-logo2.png
+  dpc-software/samples/db/users.db
+  dpc-software/samples/db/passwords
 )) {
   my $f1 = $f; $f1 =~ s/^dpc-software\/samples\///;
   if (-e $f1) { print "$f1 exists\n"; ++$cntex; next; }
-  my $c="cp $f $f1"; print "$c\n";
-  if (system($c)==0) { $cntcp++; } else { print "error: $?\n"; $cnter++; }
+  if ($f1 eq 'db/passwords') { &cp_passwords($f,$f1) }
+  else {
+    my $c="cp $f $f1"; print "$c\n";
+    if (system($c)==0) { $cntcp++; } else { print "error: $?\n"; $cnter++; }}
 }
 print "\n";
 if ($cntcp>0) { print "Copied $cntcp files\n" }
@@ -40,3 +46,37 @@ chmod a+x . images
 chmod a+r style-dpc-3.css images/dpc-logo2.png
 ';
 print $c; print `$c`;
+
+sub cp_passwords{
+  my $f=shift; my $f1=shift;
+  print "Copy and generate passwords:\n$f -> $f1\n";
+  my $fc = &getfile($f); my $fc1;
+  while ($fc =~ /\b(random-\S+)/) { $fc1.=$`.&random_string; $fc = $'; }
+  $fc1 .= $fc; &putfile($f1,$fc1)
+}
+
+# generate random string of given length
+sub random_string {
+  my $n = shift; $n = 8 unless $n > 0; my $c = shift;
+  my @chars = (0..9, 'a'..'z', 'A'..'Z');
+  if ($c eq 'd') { @chars = (0..9) }
+  return join('', map { $chars[rand($#chars+1)] } (1..$n));
+}
+
+sub getfile($) {
+    my $f = shift;
+    local *F;
+    open(F, "<$f") or die "getfile:cannot open $f:$!";
+    my @r = <F>;
+    close(F);
+    return wantarray ? @r : join ('', @r);
+}
+
+sub putfile($@) {
+    my $f = shift;
+    local *F;
+    open(F, ">$f") or die "putfile:cannot open $f:$!";
+    print F '' unless @_;
+    while (@_) { print F shift(@_) }
+    close(F);
+}

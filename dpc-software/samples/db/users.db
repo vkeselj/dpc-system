@@ -1,0 +1,13 @@
+dpcid:student1
+displayid:S1
+roles:competitor
+email:student1@dnlp.ca
+firstname:Student
+lastname:One
+
+firstname:Vlado
+lastname:Keselj
+email:vlado@dnlp.ca
+roles:admin,test-competitor
+#roles:competitor
+dpcid:vlado

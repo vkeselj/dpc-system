@@ -2,7 +2,7 @@
 our $CGI_file = 'login.cgi';
 BEGIN { $ENV{'SERVER_ADMIN'} = 'vlado@dnlp.ca'; }
 #For debugging
-# use CGI::Carp 'fatalsToBrowser';
+use CGI::Carp 'fatalsToBrowser';
 # user warnings;
 use CGI::Carp;
 #use strict;
@@ -63,145 +63,7 @@ elsif ($AuthenticationType eq 'local' and param('request_type') eq 'login') {
     $LogReport.="User $UserFirstName $UserLastName <$UserEmail> logged in.";
     &finish_page_and_exit;
 }
-elsif (param('request_type') eq 'login') {
-    my $csuserid = param('csuserid'); my $cspassword = param('cspassword');
-    my $userid = param('userid'); my $password = param('password');
-    my $email = $userid;
-    $email =~ s/\(.*\)//g; $email =~ s/^\s+//; $email =~ s/\s+$//;
-
-    if ($AuthenticationType eq 'csid+site') {
-      $csuserid =~ s/\([^)]*\)/ /g; $csuserid =~ s/^\s+//; $csuserid =~ s/\s+$//;
-      $csuserid = lc $csuserid;
-      if ($csuserid eq '') {
-	$Error = 'CS userid empty.';
-	$ErrorInternal = "CS userid empty.";
-	&print_form_and_finish;
-      }
-      my $user = &get_user_for_kv('csuserid', $csuserid);
-      if ($user eq '') {
-	$Error = 'CS userid not registered.';
-	$ErrorInternal = "CS userid ($csuserid) not in users.db. (ERR-68)";
-	&print_form_and_finish;
-      }
-      if ($user->{roles} ne 'scoreboard' &&
-	  CGI::AuthRegisterFCS::password_check_ldap($csuserid,$cspassword)!=1) {
-	$Error = 'CS userid and password not correct (CS password not confirmed by LDAP).';
-	$ErrorInternal = "CS userid ($csuserid) did not pass LDAP.";
-	&print_form_and_finish;
-      }
-
-      if (!&isSubmissionOpen() && $user->{roles} !~ /\badmin\b/) {
-	$Error = 'Practicum closed.';
-	&print_form_and_finish;
-      }
-
-      &set_random_displayids;
-      &set_random_sitecodes;
-
-      $user->{sitecode} =~ s/\s//g;
-      if ($user->{roles} !~ /\badmin\b/ && $user->{sitecode} ne param('sitecode')) {
-	$Error = 'Authentication unsuccessful (incorrect DPC Site Code, use the code given in the instruction sheet).';
-	my $s = $user->{sitecode}; $s1 = param('sitecode');
-	$ErrorInternal = "CS userid ($csuserid) sitecode not correct (ERR-85):\n".
-	  "expected=($s) given=($s1)";
-	&print_form_and_finish;
-      }
-
-      if ($user->{email} eq '') {
-	&myprint($Error='Internal error: no email (ERR-78)');
-	&print_form_and_finish; }
-      $email = $user->{email};
-      $LogReport.="User $UserFirstName $UserLastName <$UserEmail> logged in.";
-      &set_new_session_for_email($email);
-    }
-
-    elsif ($AuthenticationType eq 'csid+db') {
-      $csuserid =~ s/\([^)]*\)/ /g; $csuserid =~ s/^\s+//;
-      $csuserid =~ s/\s+$//; $csuserid = lc $csuserid;
-      if ($csuserid eq '') {
-	$Error = 'CS userid empty.';
-	$ErrorInternal = "CS userid empty.";
-	&print_form_and_finish;
-      }
-      my $user = &get_user_for_kv('csuserid', $csuserid);
-      if ($user eq '') {
-	$Error = 'CS userid not registered.';
-	$ErrorInternal = "CS userid ($csuserid) not in users.db. (ERR-68)";
-	&print_form_and_finish;
-      }
-      if ($user->{roles} ne 'scoreboard' &&
-	  CGI::AuthRegisterFCS::password_check_ldap($csuserid,$cspassword)!=1) {
-	$Error = 'CS userid and password not correct (CS password not confirmed by LDAP).';
-	$ErrorInternal = "CS userid ($csuserid) did not pass LDAP.";
-	&print_form_and_finish;
-      }
-
-      if (!&isAccessAllowed() && $user->{roles} !~ /\badmin\b/) {
-	$Error = "Access not allowed: $AccessMessage";
-	&print_form_and_finish;
-      }
-
-      &set_random_displayids;
-
-      if ($user->{email} eq '') {
-	&myprint($Error='Internal error: no email (ERR-78)');
-	&print_form_and_finish; }
-      $email = $user->{email};
-      $LogReport.="User $UserFirstName $UserLastName <$UserEmail> logged in.";
-      &set_new_session_for_email($email);
-
-    } else {
-        if ($csuserid ne '') {
-	$csuserid =~ s/\([^)]*\)/ /g; $csuserid =~ s/^\s+//; $csuserid =~ s/\s+$//;
-	$csuserid = lc $csuserid;
-	use CGI::AuthRegisterFCS;
-        if (CGI::AuthRegisterFCS::password_check_ldap($csuserid,$cspassword)!=1) {
-	  $Error = 'CS userid and password not correct (LDAP).';
-	  $ErrorInternal = "CS userid ($csuserid) did not pass LDAP.";
-	  &print_form_and_finish;
-	}
-	my $user = &get_user_for_kv('csuserid', $csuserid);
-        if ($user eq '') { $user = &get_user_for_kv('dpcid', $csuserid); }
-        if ($user eq '') {
-	  #$email = $csuserid.'_CSID@dnlp.ca';
-	  $email = $csuserid.'@cs.dal.ca';
-	  if (&get_user_for_email($email) eq '') {
-	    # &myprint('TODO.'); &print_form_and_finish; $Error='err'; exit;
-	    my @users = @{ &read_db('file=db/users.db') }; my $flag='';
-	    for (@users) { if ($_->{email} eq $email) { $flag=1 } }
-	    if ($flag) { &myprint('Email exists.'); &print_form_and_finish; }
-	    for (@users) { if ($_->{dpcid} eq $csuserid) { $flag=1 } }
-	    if ($flag) { &myprint('dpcid exists.'); &print_form_and_finish; }
-	    my $record;
-	    $record = "dpcid:$csuserid\ncsuserid:$csuserid\n".
-	      "firstname:$csuserid\n".
-	      #"lastname:$csuserid\nemail:$email\nroles:competitor\n";
-	      "lastname:\nroles:competitor\n";
-	    my $usersfile = getfile("db/users.db")."\n\n$record";
-	    $usersfile =~ s/\n\n\n+/\n\n/g;
-	    putfile("db/users.db", $usersfile);
-	    &set_random_displayids;
-	  }
-	}
-        DPC::set_new_session_for_kv('dpcid', $csuserid);
-	#&set_new_session_for_email($email);
-      } else {
-        # Check for registration, added for ICPC-open 2019-11-13
-        my $u = &get_user_for_kv('email', $email);
-        if ($u eq '') { $u = &get_user_for_kv('dpcid', $email); }
-        if ($u eq '' or $u->{alternativeLoginAllowed} != 1) {
-	   $Error = 'Alternative login not registered for this email.';
-	   &print_form_and_finish; }
-        &login($email, $password);
-      }
-    }
-    &print_form_and_finish if $Error ne '';
-    &myprint("<p>Hi $UserFirstName.  You are logged in.\n".
-	     "<p>You can proceed and click here to look at the problems: ".
-	     "<a href=\"problems.cgi\">Problems</a>\n" );
-    $LogReport .= "User $UserFirstName $UserLastName <$UserEmail> logged in.";
-    &finish_page_and_exit;
-  }
+elsif (param('request_type') eq 'login') { die "not available..." }
 
 # Empty request
 
