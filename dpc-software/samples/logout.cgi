@@ -1,5 +1,8 @@
 #!/usr/bin/perl
-BEGIN { $ENV{'SERVER_ADMIN'} = 'vlado@dnlp.ca'; }
+# DPC System template CGI
+our $CGI_file = 'logout.cgi';
+# Possibly useful line (replace admin-email):
+# BEGIN { $ENV{'SERVER_ADMIN'} = 'admin-email'; }
 #use strict;
 use lib '.', 'dpc-software/bin';
 use CGI qw(:standard);

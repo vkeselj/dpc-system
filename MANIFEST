@@ -1,21 +1,55 @@
 README.md  # Readme file for Github
 MANIFEST   # This list of files for public package release
+dpc-software/bin/dpc-setup-samples
+dpc-software/bin/DPC.pm  # main Perl module
+dpc-software/bin/dpc-lib.pl # auxiliary library, to be moved to DPC.pm
+dpc-software/bin/DPC/Feedback.pm # Feeback module
 dpc-software/samples/index.cgi
 dpc-software/samples/login.cgi
 dpc-software/samples/logout.cgi
-dpc-software/samples/problems.cgi
+dpc-software/samples/clarifications.cgi
 dpc-software/samples/codeview.cgi
+dpc-software/samples/contest.cgi
+dpc-software/samples/problems.cgi
+dpc-software/samples/refs.cgi
 dpc-software/samples/feedbackview.cgi
+dpc-software/samples/scoreboard.cgi
 dpc-software/samples/adminview.cgi
+dpc-software/samples/allsubmissions.cgi
+dpc-software/samples/scoreboard-admin.cgi
 dpc-software/samples/configuration.pl
 dpc-software/samples/style-dpc-3.css
 dpc-software/samples/templates/dpc-3.html.sfish
 dpc-software/samples/images/dpc-logo2.png
 dpc-software/samples/db/users.db
 dpc-software/samples/db/passwords
-dpc-software/bin/dpc-setup-samples
-dpc-software/bin/DPC.pm  # main Perl module
-dpc-software/bin/dpc-lib.pl # auxiliary library, to be moved to DPC.pm
-dpc-software/bin/DPC/Feedback.pm # Feeback module
+dpc-software/samples/problems/data-judging
+dpc-software/samples/problems/data-judging/A.in
+dpc-software/samples/problems/data-judging/A.out
+dpc-software/samples/problems/data-judging/Aj.in
+dpc-software/samples/problems/data-judging/Aj.out
+dpc-software/samples/problems/data-judging/B.in
+dpc-software/samples/problems/data-judging/B.out
+dpc-software/samples/problems/data-judging/Bj.in
+dpc-software/samples/problems/data-judging/Bj.out
+dpc-software/samples/problems/data-judging/C.in
+dpc-software/samples/problems/data-judging/C.out
+dpc-software/samples/problems/data-judging/Cj.in
+dpc-software/samples/problems/data-judging/Cj.out
+dpc-software/samples/problems/data-sample/A.in
+dpc-software/samples/problems/data-sample/A.out
+dpc-software/samples/problems/data-sample/B.in
+dpc-software/samples/problems/data-sample/B.out
+dpc-software/samples/problems/data-sample/C.in
+dpc-software/samples/problems/data-sample/C.out
+dpc-software/samples/problems/descriptions/A.meta
+dpc-software/samples/problems/descriptions/A.pdf
+dpc-software/samples/problems/descriptions/B.meta
+dpc-software/samples/problems/descriptions/B.pdf
+dpc-software/samples/problems/descriptions/C.meta
+dpc-software/samples/problems/descriptions/C.pdf
+dpc-software/samples/problems/solutions/A.c
+dpc-software/samples/problems/solutions/B.c
+dpc-software/samples/problems/solutions/C.c
 CGI/AuthRegister.pm    # my Perl module, available on CPAN
 Text/Starfish.pm       # my Perl module, availalbe on CPAN

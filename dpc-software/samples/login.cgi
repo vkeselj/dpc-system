@@ -1,6 +1,8 @@
 #!/usr/bin/perl
+# DPC System template CGI
 our $CGI_file = 'login.cgi';
-BEGIN { $ENV{'SERVER_ADMIN'} = 'vlado@dnlp.ca'; }
+# Possibly useful line (replace admin-email):
+# BEGIN { $ENV{'SERVER_ADMIN'} = 'admin-email'; }
 #For debugging
 use CGI::Carp 'fatalsToBrowser';
 # user warnings;

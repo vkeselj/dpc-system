@@ -1,5 +1,14 @@
 Revision history for DPC System
 
+1.2005 2020-11-04
+- incomplete package, preparation in progress
+- documentation improvements
+- added dpc-software/samples/contest.cgi, dpc-sofware/samples/refs.cgi,
+  dpc-software/samples/clarifications.cgi,
+  dpc-software/samples/allsubmissions.cgi,
+  dpc-software/samples/scoreboard-admin.cgi,
+  dpc-software/samples/problems/**,
+
 1.2004 2020-10-29
 - incomplete package, preparation in progress
 - simplified sample login.cgi, creating dir 'db' in dpc-setup-samples

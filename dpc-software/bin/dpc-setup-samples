@@ -16,10 +16,16 @@ for my $f (qw(
   dpc-software/samples/index.cgi
   dpc-software/samples/login.cgi
   dpc-software/samples/logout.cgi
-  dpc-software/samples/problems.cgi
+  dpc-software/samples/clarifications.cgi
   dpc-software/samples/codeview.cgi
+  dpc-software/samples/contest.cgi
+  dpc-software/samples/problems.cgi
+  dpc-software/samples/refs.cgi
   dpc-software/samples/feedbackview.cgi
+  dpc-software/samples/scoreboard.cgi
   dpc-software/samples/adminview.cgi
+  dpc-software/samples/allsubmissions.cgi
+  dpc-software/samples/scoreboard-admin.cgi
   dpc-software/samples/style-dpc-3.css
   dpc-software/samples/templates/dpc-3.html.sfish
   dpc-software/samples/images/dpc-logo2.png
@@ -33,10 +39,51 @@ for my $f (qw(
     my $c="cp $f $f1"; print "$c\n";
     if (system($c)==0) { $cntcp++; } else { print "error: $?\n"; $cnter++; }}
 }
+if (-d 'problems') { print "problems/ exists\n"; }
+else {
+  for my $d (qw(problems problems/data-judging problems/data-sample
+		problems/descriptions problems/solutions )) {
+    -d $d or mkdir $d, 0777; }
+  for my $f (qw(
+    dpc-software/samples/problems/data-judging/A.in
+    dpc-software/samples/problems/data-judging/A.out
+    dpc-software/samples/problems/data-judging/Aj.in
+    dpc-software/samples/problems/data-judging/Aj.out
+    dpc-software/samples/problems/data-judging/B.in
+    dpc-software/samples/problems/data-judging/B.out
+    dpc-software/samples/problems/data-judging/Bj.in
+    dpc-software/samples/problems/data-judging/Bj.out
+    dpc-software/samples/problems/data-judging/C.in
+    dpc-software/samples/problems/data-judging/C.out
+    dpc-software/samples/problems/data-judging/Cj.in
+    dpc-software/samples/problems/data-judging/Cj.out
+    dpc-software/samples/problems/data-sample/A.in
+    dpc-software/samples/problems/data-sample/A.out
+    dpc-software/samples/problems/data-sample/B.in
+    dpc-software/samples/problems/data-sample/B.out
+    dpc-software/samples/problems/data-sample/C.in
+    dpc-software/samples/problems/data-sample/C.out
+    dpc-software/samples/problems/descriptions/A.meta
+    dpc-software/samples/problems/descriptions/A.pdf
+    dpc-software/samples/problems/descriptions/B.meta
+    dpc-software/samples/problems/descriptions/B.pdf
+    dpc-software/samples/problems/descriptions/C.meta
+    dpc-software/samples/problems/descriptions/C.pdf
+    dpc-software/samples/problems/solutions/A.c
+    dpc-software/samples/problems/solutions/B.c
+    dpc-software/samples/problems/solutions/C.c
+  )) {
+    my $f1 = $f; $f1 =~ s/^dpc-software\/samples\///;  
+    my $c="cp $f $f1"; print "$c\n";
+    if (system($c)==0) { $cntcp++; } else { print "error: $?\n"; $cnter++; }}
+}
+
 print "\n";
 if ($cntcp>0) { print "Copied $cntcp files\n" }
 if ($cntex>0) { print "$cntex files exist and were not copied.\n".
-  "You must remove them to be replaced with samples.\n" }
+  "You must remove them to be replaced with samples.\n".
+  "Directory problems/ must be removed to copy problems sample files\n";
+}
 if ($cnter>0) { print "Errors in $cnter files!\n" }
 
 # Some basic permissions setup, more elaborate setup is in other commands

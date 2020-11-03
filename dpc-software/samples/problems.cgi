@@ -1,5 +1,8 @@
 #!/usr/bin/perl
-BEGIN { $ENV{'SERVER_ADMIN'} = 'vlado@dnlp.ca'; }
+# DPC System template CGI
+our $CGI_file = 'problems.cgi';
+# Possibly useful line (replace admin-email):
+# BEGIN { $ENV{'SERVER_ADMIN'} = 'admin-email'; }
 #For debugging
 use CGI::Carp 'fatalsToBrowser';
 use CGI::Carp;
@@ -19,7 +22,6 @@ use subs qw(finish_page);
 
 our $Title = $CompetitionId.' &mdash; Problems';
 our $H1    = $Title;
-our $CGI_file = 'problems.cgi';
 
 &analyze_cookie;
 

@@ -2,6 +2,11 @@
 # Local competition configuration file: DPC Sample Contest
 # Sample configuration file for DPC System
 
+# The most important parameter to set is: $HttpsBaseLink
+# I like to combine it with the $CompetitionDate variable.
+$CompetitionDate     = '2020-11-03'; # YYYY-MM-DD
+$HttpsBaseLink = "https://web.cs.dal.ca/~dpc/$CompetitionDate-test";
+
 # Different practicum types.  'dpch' is the basic one and should be
 # used for now, unless you know what you are doing.
 $PracticumType = 'dpch'; # dpc, practicum, dpch1, dpch2
@@ -14,7 +19,6 @@ $RegistrationOpen = ''; # 1 or ''
 $SubmissionOpen   = 1; # 1 or ''
 $ContestOpen      = 1; # 1 or ''
 
-$CompetitionDate     = '2020-10-03'; # eg: '2012-04-03' used for DPC-YYYY-MM-DD
 $CompetitionStartTime= '2020-10-03 10:00:00';
 $ProblemsAvailableAt = '2020-10-03 10:00:00';
 
@@ -32,9 +36,6 @@ $CompetitionId='DPC-Sample-Contest';
 #$CompetitionId = "CSCI2132-P4"; # eg: 'DPC-H-2013-1' "DPC-$CompetitionDate"
 
 # $ScoreboardFreezeTime='2011-05-13 13:20:00';
-
-# Enter the base URL link for the contest
-$HttpsBaseLink = "https://web.cs.dal.ca/~dpc/$CompetitionDate-sample";
 
 $CompetitionFullTitle   = 'DPC Sample Contest';
 $CompetitionHeaderTitle = 'DPC Sample Contest';
