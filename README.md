@@ -76,8 +76,8 @@ immediatelly after installation.
 password saved in the `db/passwords1` file.  You should be able browse
 the site and see three sample problems.  The next issue is setting up
 the permissions properly for your web site.  A script will be added to
-set the permissions for three options: 1. suEXEC, 2. group access, and
-3. all access.
+set the permissions for three options: 1. suEXEC, 2. group access,
+and 3. all access.
 
 ## ChangeLog
 
