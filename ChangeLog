@@ -1,7 +1,8 @@
 Revision history for DPC System
 
 1.2005 2020-11-04
-- incomplete package, preparation in progress
+- status: web site is operational, but more functionality needs to be added:
+  various permission options, check submission, judging
 - documentation improvements
 - added dpc-software/samples/contest.cgi, dpc-sofware/samples/refs.cgi,
   dpc-software/samples/clarifications.cgi,
